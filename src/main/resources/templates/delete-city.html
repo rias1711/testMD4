@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--    FontAwesome Glyphicon-->
+    <script src="https://kit.fontawesome.com/dffada201a.js" crossorigin="anonymous"></script>
+    <title>Delete city</title>
+</head>
+<body>
+<section class="container-xl mt-100 mb-5">
+    <div>
+        <h3 style="color: orange" align="center">Delete City</h3>
+    </div>
+    <form th:action="@{/delete-city}" th:object="${city}" method="post" enctype="multipart/form-data">
+        <input hidden type="text" th:field="*{cityId}" name="id">
+        <div class="form-group">
+            <label for="cityName">City</label>
+            <input disabled class="form-control" type="text" name="cityName" id="cityName" th:field="*{cityName}" required/>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select disabled class="form-control" id="country" name="country" th:field="*{country}">
+                <option th:each="n : ${country}" th:value="${n.countryId}" th:text="${n.countryName}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="area">Area</label>
+            <input disabled class="form-control" id="area" type="number" min="0" max="1000" name="area"
+                   th:field="*{area}"/>
+        </div>
+        <div class="form-group">
+            <label for="population">Population</label>
+            <textarea disabled class="form-control" id="population" type="text" name="population" th:field="*{population}">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <label for="gdp">GDP</label>
+            <input disabled class="form-control" type="text" name="gdp" th:field="*{gdp}" id="gdp">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea disabled class="form-control" id="description" type="text" name="description" th:field="*{description}">
+            </textarea>
+        </div>
+        <input class="btn btn-danger" type="submit" value="Delete">
+        <a class="btn btn-info" th:href="@{/}">Back</a>
+    </form>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+</html>

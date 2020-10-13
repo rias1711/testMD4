@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!--    FontAwesome Glyphicon-->
+    <script src="https://kit.fontawesome.com/dffada201a.js" crossorigin="anonymous"></script>
+    <title>View City</title>
+</head>
+<body>
+<section class="container-xl mt-100 mb-5">
+    <div>
+        <h3 style="color: orange" align="center">City details</h3>
+    </div>
+    <form th:action="@{/edit-city}" th:object="${city}" method="post" enctype="multipart/form-data">
+        <label hidden th:text="${city.cityId}" name="cityId"></label>
+        <div class="form-group">
+            City:
+            <span th:text="${city.cityName}"></span>
+        </div>
+        <div class="form-group">
+            Country:
+            <span th:text="${city.country.countryName}"></span>
+        </div>
+        <div class="form-group">
+            Area:
+            <span th:text="${city.area}"></span><span> (Km <sup>2</sup>)</span>
+        </div>
+        <div class="form-group">
+            Population:
+            <span th:text="${city.population}"></span><span> (Người)</span>
+        </div>
+        <div class="form-group">
+            GDP:
+            <span th:text="${city.gdp}"></span><span> (USD/Người)</span>
+        </div>
+        <div class="form-group">
+            Description:
+            <span th:text="${city.description}">
+            </span>
+        </div>
+        <a class="btn btn-warning" th:href="@{/edit-city/{id}(id=${city.cityId})}">Edit</a>
+        <a class="btn btn-danger" th:href="@{/delete-city/{id}(id=${city.cityId})}">Delete</a>
+        <a class="btn btn-info" th:href="@{/}">Back</a>
+    </form>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+</html>
